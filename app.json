@@ -1,0 +1,20 @@
+{
+  "name": "@microlinkhq/queue",
+  "description": "High resilient queue for processing URLs",
+  "repository": "https://github.com/microlinkhq/queue",
+  "logo": "https://microlink.io/logo-trim.jpg",
+  "keywords": ["microlink", "queue"],
+  "addons": [
+    "scheduler:standard",
+    "heroku-redis:hobby-dev",
+    "papertrail:choklad"
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "formation": {
+    "web": {
+      "command": "npm start:sender"
+    }
+  }
+}
