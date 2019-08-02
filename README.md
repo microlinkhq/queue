@@ -1,6 +1,6 @@
-<h1 align="center">
-  <img src="https://microlink.io/banner.png" alt="microlink logo">
-</h1>
+<div align="center">
+  <img src="https://cdn.microlink.io/logo/banner.png" alt="microlink cdn">
+</div>
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
