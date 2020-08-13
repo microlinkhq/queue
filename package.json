@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "@microlink/mql": "~0.7.0",
-    "bull": "~3.16.0",
+    "bull": "~3.17.0",
     "micro": "~9.3.3",
     "micro-route": "~2.5.0"
   },
