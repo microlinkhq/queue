@@ -21,10 +21,10 @@
     "queue"
   ],
   "dependencies": {
-    "@microlink/mql": "~0.8.0",
+    "@microlink/mql": "~0.8.2",
     "bull": "~3.21.0",
-    "micro": "~9.3.3",
-    "micro-route": "~2.5.0"
+    "micri": "~4.3.0",
+    "to-query": "~1.6.1"
   },
   "files": [
     "src"
@@ -66,7 +66,7 @@
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin master",
     "test": "nyc ava",
-    "update": "ncu -a",
+    "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
   "license": "MIT",
