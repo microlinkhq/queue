@@ -5,8 +5,8 @@
   "version": "0.0.0",
   "main": "src/receiver.js",
   "author": {
-    "name": "microlink.io",
     "email": "hello@microlink.io",
+    "name": "microlink.io",
     "url": "https://microlink.io"
   },
   "repository": {
@@ -27,23 +27,16 @@
     "micri": "~4.3.0",
     "to-query": "~1.6.1"
   },
-  "files": [
-    "src"
-  ],
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "ava": "latest",
     "conventional-github-releaser": "latest",
-    "coveralls": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
     "git-dirty": "latest",
     "husky": "latest",
     "lint-staged": "latest",
-    "micro-dev": "latest",
     "npm-check-updates": "latest",
-    "nyc": "latest",
     "prettier-standard": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
@@ -52,21 +45,25 @@
   "engines": {
     "node": ">= 8"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
-    "start:receiver": "DEBUG=queue* node src/receiver.js",
     "clean": "rm -rf node_modules",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && standard",
-    "postrelease": "npm run release:tags && npm run release:github && npm publish",
+    "postinstall": "husky install",
+    "postrelease": "npm run release:tags && npm run release:github",
     "precommit": "lint-staged",
-    "start:sender": "DEBUG=queue* node src/sender.js",
-    "prerelease": "git-dirty && npm run update:check && npm test && git-authors-cli",
+    "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",
-    "release": "git add package.json && standard-version -a",
+    "release": "standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
-    "release:tags": "git push --follow-tags origin master",
-    "test": "nyc ava",
+    "release:tags": "git push --follow-tags origin HEAD:master",
+    "start:receiver": "DEBUG=queue* node src/receiver.js",
+    "start:sender": "DEBUG=queue* node src/sender.js",
+    "test": "exit 0",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
@@ -96,7 +93,10 @@
         "standard-markdown",
         "git add"
       ]
-    }
+    },
+    "package.json": [
+      "finepack"
+    ]
   },
   "standard-version": {
     "scripts": {
