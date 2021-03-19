@@ -23,6 +23,7 @@
   "dependencies": {
     "@microlink/mql": "~0.8.2",
     "bull": "~3.21.0",
+    "debug-logfmt": "~1.0.4",
     "micri": "~4.3.0",
     "to-query": "~1.6.1"
   },
@@ -52,13 +53,13 @@
     "node": ">= 8"
   },
   "scripts": {
-    "start:receiver": "farm src/receiver.js",
+    "start:receiver": "DEBUG=queue* node src/receiver.js",
     "clean": "rm -rf node_modules",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github && npm publish",
     "precommit": "lint-staged",
-    "start:sender": "if [[ $NODE_ENV == \"production\" ]]; then micro; else micro-dev; fi",
+    "start:sender": "DEBUG=queue* node src/sender.js",
     "prerelease": "git-dirty && npm run update:check && npm test && git-authors-cli",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",

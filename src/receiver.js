@@ -1,23 +1,21 @@
 'use strict'
 
-const queue = require('./queue')
-const createLog = require('./log')
+const debug = require('debug-logfmt')('queue:receiver')
 const mql = require('@microlink/mql')
 
-module.exports = function (opts) {
-  const log = createLog(opts)
+const queue = require('./queue')
+const { CONCURRENCY } = require('./constants')
 
-  log('status=listening')
+debug('status=listening')
 
-  queue.process(async ({ id, data }) => {
-    console.log(`status=processing id=${id}`)
+queue.process(CONCURRENCY, async ({ id, data }) => {
+  debug({ state: 'processing', id })
 
-    const { url, ...opts } = data
-    const { status } = await mql(url, opts)
+  const { url, ...opts } = data
+  const { status } = await mql(url, opts)
 
-    log(`status=processed id=${id} status=${status}`)
+  debug({ state: 'processed', id, url, status })
 
-    if (status === 'success') return Promise.resolve()
-    return Promise.reject(new Error(status))
-  })
-}
+  if (status === 'success') return Promise.resolve()
+  return Promise.reject(new Error(status))
+})

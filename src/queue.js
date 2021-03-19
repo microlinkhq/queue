@@ -2,10 +2,8 @@
 
 const Queue = require('bull')
 
-const { REDIS_URL } = process.env
+const { name } = require('../package.json')
 
-if (!REDIS_URL) {
-  throw new TypeError("You need to provide redis connection as 'REDIS_URL'.")
-}
+const { REDIS_URL } = require('./constants')
 
-module.exports = new Queue('microlink', REDIS_URL)
+module.exports = new Queue(name, REDIS_URL)
