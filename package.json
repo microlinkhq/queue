@@ -34,10 +34,10 @@
     "finepack": "latest",
     "git-authors-cli": "latest",
     "git-dirty": "latest",
-    "husky": "latest",
     "lint-staged": "latest",
     "npm-check-updates": "latest",
     "prettier-standard": "latest",
+    "simple-git-hooks": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
     "standard-version": "latest"
@@ -52,7 +52,6 @@
     "clean": "rm -rf node_modules",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && standard",
-    "postinstall": "husky install",
     "postrelease": "npm run release:tags && npm run release:github",
     "precommit": "lint-staged",
     "prerelease": "npm run update:check && npm run contributors",
@@ -73,30 +72,20 @@
       "@commitlint/config-conventional"
     ]
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "linters": {
-      "package.json": [
-        "finepack",
-        "git add"
-      ],
-      "*.js": [
-        "prettier-standard",
-        "git add"
-      ],
-      "*.md": [
-        "standard-markdown",
-        "git add"
-      ]
-    },
     "package.json": [
       "finepack"
+    ],
+    "*.js,!*.min.js,": [
+      "prettier-standard"
+    ],
+    "*.md": [
+      "standard-markdown"
     ]
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit",
+    "pre-commit": "npx lint-staged"
   },
   "standard-version": {
     "scripts": {
