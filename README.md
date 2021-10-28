@@ -35,7 +35,7 @@ It's exposed using a HTTP server.
 For sending a job into the queue, just send it using a `GET`
 
 ```bash
-$ curl curl http://localhost:3000\?url\=http://microlink.com\&video
+$ curl http://localhost:3000\?url\=http://microlink.com\&video
 ```
 
 If the job has been added successfully, you will have a `201 Created` and the `job.id` back.
