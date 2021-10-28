@@ -2,7 +2,7 @@
   "name": "queue",
   "description": "High resilient queue for processing URLs",
   "homepage": "https://nicedoc.io/microlinkhq/queue",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "src/receiver.js",
   "author": {
     "email": "hello@microlink.io",
