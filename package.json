@@ -36,7 +36,6 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "ci-publish": "latest",
     "conventional-github-releaser": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
@@ -58,7 +57,7 @@
     "clean": "rm -rf node_modules",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && standard",
-    "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
+    "postrelease": "npm run release:tags && npm run release:github",
     "precommit": "lint-staged",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
@@ -72,6 +71,7 @@
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
+  "private": true,
   "license": "MIT",
   "commitlint": {
     "extends": [
