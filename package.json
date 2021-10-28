@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@microlink/mql": "~0.10.0",
-    "bull": "~3.29.0",
+    "bull": "~4.0.0",
     "debug-logfmt": "~1.0.4",
     "micri": "~4.3.0",
     "to-query": "~1.6.1"
@@ -36,10 +36,10 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "ci-publish": "latest",
     "conventional-github-releaser": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
-    "git-dirty": "latest",
     "lint-staged": "latest",
     "npm-check-updates": "latest",
     "prettier-standard": "latest",
@@ -58,7 +58,7 @@
     "clean": "rm -rf node_modules",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && standard",
-    "postrelease": "npm run release:tags && npm run release:github",
+    "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
     "precommit": "lint-staged",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
