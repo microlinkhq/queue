@@ -39,7 +39,7 @@
     "conventional-github-releaser": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
-    "lint-staged": "latest",
+    "nano-staged": "latest",
     "npm-check-updates": "latest",
     "prettier-standard": "latest",
     "simple-git-hooks": "latest",
@@ -58,7 +58,7 @@
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github",
-    "precommit": "lint-staged",
+    "precommit": "nano-staged",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",
@@ -78,7 +78,7 @@
       "@commitlint/config-conventional"
     ]
   },
-  "lint-staged": {
+  "nano-staged": {
     "package.json": [
       "finepack"
     ],
@@ -91,7 +91,7 @@
   },
   "simple-git-hooks": {
     "commit-msg": "npx commitlint --edit",
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx nano-staged"
   },
   "standard-version": {
     "scripts": {
