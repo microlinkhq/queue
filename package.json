@@ -58,7 +58,6 @@
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github",
-    "precommit": "nano-staged",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",
