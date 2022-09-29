@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@microlink/mql": "~0.10.0",
-    "bull": "~4.9.0",
+    "bull": "~4.10.0",
     "debug-logfmt": "~1.0.4",
     "micri": "~4.5.0",
     "to-query": "~1.6.1"
