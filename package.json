@@ -29,7 +29,7 @@
   "dependencies": {
     "@microlink/mql": "~0.11.1",
     "bull": "~4.11.1",
-    "debug-logfmt": "~1.0.4",
+    "debug-logfmt": "~1.2.0",
     "send-http": "~1.0.2",
     "to-query": "~1.6.1"
   },
