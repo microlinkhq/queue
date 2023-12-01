@@ -27,7 +27,7 @@
     "queue"
   ],
   "dependencies": {
-    "@microlink/mql": "~0.11.1",
+    "@microlink/mql": "~0.12.1",
     "bull": "~4.11.1",
     "debug-logfmt": "~1.2.0",
     "send-http": "~1.0.2",
