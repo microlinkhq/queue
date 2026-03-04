@@ -4,6 +4,7 @@
   "homepage": "https://nicedoc.io/microlinkhq/queue",
   "version": "1.0.37",
   "main": "src/receiver.js",
+  "types": "index.d.ts",
   "author": {
     "email": "hello@microlink.io",
     "name": "microlink.io",
@@ -51,7 +52,8 @@
     "node": ">= 8"
   },
   "files": [
-    "src"
+    "src",
+    "index.d.ts"
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
